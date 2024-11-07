@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>作文智能评阅系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f5f6fa;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .main-nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item i {
+            font-size: 16px;
+        }
+
+        .evaluation-container {
+            width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .input-section {
+            padding: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .grade-select {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .title-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .content-input {
+            width: 100%;
+            height: 400px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        .title-input:focus, .content-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .submit-btn i {
+            margin-right: 8px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item i {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .feature-item p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .input-with-button {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .speech-btn {
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .speech-btn:hover {
+            background: #2980b9;
+        }
+
+        .speech-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .speech-btn i {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>智能作文评阅系统</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-pen-alt"></i>作文评阅
+            </a>
+            <a href="history.html" class="nav-item">
+                <i class="fas fa-history"></i>评阅历史
+            </a>
+            <a href="examples.html" class="nav-item">
+                <i class="fas fa-book"></i>优秀范文
+            </a>
+            <a href="analysis.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>数据分析
+            </a>
+            <a href="guide.html" class="nav-item">
+                <i class="fas fa-question-circle"></i>使用指南
+            </a>
+        </nav>
+    </div>
+
+    <div class="evaluation-container">
+        <div class="features">
+            <div class="feature-item">
+                <i class="fas fa-robot"></i>
+                <h3>AI智能评阅</h3>
+                <p>专业的评分标准</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>多维度分析</h3>
+                <p>全方位评价反馈</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-lightbulb"></i>
+                <h3>个性化建议</h3>
+                <p>针对性改进意见</p>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label class="input-label">年级选择</label>
+                <select id="gradeLevel" class="grade-select">
+                    <option value="primary">小学</option>
+                    <option value="junior">初中</option>
+                    <option value="senior">高中</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label">作文标题</label>
+                <div class="input-with-button">
+                    <input type="text" id="title" placeholder="请输入作文标题" class="title-input">
+                    <button id="titleSpeechBtn" class="speech-btn">
+                        <i class="fas fa-microphone"></i>语音输入
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">作文内容</label>
+                <div class="input-with-button">
+                    <textarea id="content" placeholder="请输入作文内容" class="content-input"></textarea>
+                    <button id="contentSpeechBtn" class="speech-btn">
+                        <i class="fas fa-microphone"></i>语音输入
+                    </button>
+                </div>
+            </div>
+            
+            <button id="submitBtn" class="submit-btn">
+                <i class="fas fa-pen-fancy"></i>开始评阅
+            </button>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="speech.js"></script>
+    <script src="evaluation.js"></script>
+</body>
+</html> 

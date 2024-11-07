@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>优秀范文 - 作文评阅系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>智能作文评阅系统</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-pen-alt"></i>作文评阅
+            </a>
+            <a href="history.html" class="nav-item">
+                <i class="fas fa-history"></i>评阅历史
+            </a>
+            <a href="examples.html" class="nav-item active">
+                <i class="fas fa-book"></i>优秀范文
+            </a>
+            <a href="analysis.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>数据分析
+            </a>
+            <a href="guide.html" class="nav-item">
+                <i class="fas fa-question-circle"></i>使用指南
+            </a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- 分类筛选 -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <label>年级:</label>
+                <select class="input-control">
+                    <option value="all">全部</option>
+                    <option value="primary">小学</option>
+                    <option value="junior">初中</option>
+                    <option value="senior">高中</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>类型:</label>
+                <select class="input-control">
+                    <option value="all">全部</option>
+                    <option value="narrative">记叙文</option>
+                    <option value="argumentative">议论文</option>
+                    <option value="descriptive">描写文</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>主题:</label>
+                <select class="input-control">
+                    <option value="all">全部</option>
+                    <option value="nature">自然环境</option>
+                    <option value="society">社会现象</option>
+                    <option value="life">生活感悟</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <input type="text" class="input-control" placeholder="搜索范文...">
+                <button class="btn btn-primary">
+                    <i class="fas fa-search"></i>搜索
+                </button>
+            </div>
+        </div>
+
+        <!-- 推荐范文 -->
+        <div class="featured-section">
+            <h2>推荐范文</h2>
+            <div class="featured-essay">
+                <div class="essay-content">
+                    <h3>《春天的色彩》</h3>
+                    <div class="essay-meta">
+                        <span><i class="fas fa-graduation-cap"></i>高中</span>
+                        <span><i class="fas fa-tag"></i>描写文</span>
+                        <span><i class="fas fa-star"></i>98分</span>
+                    </div>
+                    <p class="essay-preview">春天来了，大地披上了绿装。远处的山峦如同一幅泼墨山水画，近处的原野上点缀着各色野花...</p>
+                    <div class="essay-highlights">
+                        <h4>亮点分析</h4>
+                        <ul>
+                            <li>色彩描写生动形象</li>
+                            <li>比喻修辞运用恰当</li>
+                            <li>层次分明，结构完整</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="essay-image" style="background-image: url('/images/spring.jpg')"></div>
+            </div>
+        </div>
+
+        <!-- 范文列表 -->
+        <div class="examples-grid">
+            <div class="example-card">
+                <div class="example-header">
+                    <span class="example-title">《难忘的一课》</span>
+                    <span class="example-grade">初中</span>
+                </div>
+                <p class="example-preview">那是一堂特殊的语文课，老师没有讲课本上的知识，而是给我们讲述了一个关于诚信的故事...</p>
+                <div class="example-tags">
+                    <span class="tag">记叙文</span>
+                    <span class="tag">教育</span>
+                    <span class="tag">95分</span>
+                </div>
+                <div class="example-footer">
+                    <span class="example-score">得分：95</span>
+                    <a href="#" class="read-more">阅读全文</a>
+                </div>
+            </div>
+            <!-- 更多范文卡片 -->
+        </div>
+
+        <!-- 写作技巧 -->
+        <div class="writing-tips">
+            <h2>写作技巧</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>开头技巧</h3>
+                    <p>善用总分结构，开门见山或情景导入都是不错的选择...</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>结构布局</h3>
+                    <p>合理安排段落，注意过渡自然，首尾呼应更出彩...</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-feather-alt"></i>
+                    <h3>语言运用</h3>
+                    <p>准确、生动、简洁是语言运用的三大原则...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <button class="btn btn-secondary"><i class="fas fa-chevron-left"></i></button>
+            <span class="page-number active">1</span>
+            <span class="page-number">2</span>
+            <span class="page-number">3</span>
+            <span class="page-dots">...</span>
+            <span class="page-number">10</span>
+            <button class="btn btn-secondary"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script src="examples.js"></script>
+</body>
+</html> 

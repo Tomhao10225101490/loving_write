@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数据分析 - 作文评阅系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>智能作文评阅系统</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item" data-nav="evaluate">
+                <i class="fas fa-pen-alt"></i>作文评阅
+            </a>
+            <a href="history.html" class="nav-item" data-nav="history">
+                <i class="fas fa-history"></i>评阅历史
+            </a>
+            <div class="nav-dropdown">
+                <a href="examples.html" class="nav-item" data-nav="examples">
+                    <i class="fas fa-book"></i>优秀范文
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="examples.html?type=narrative" class="dropdown-item">
+                        <i class="fas fa-pen"></i>记叙文
+                    </a>
+                    <a href="examples.html?type=argumentative" class="dropdown-item">
+                        <i class="fas fa-gavel"></i>议论文
+                    </a>
+                    <a href="examples.html?type=descriptive" class="dropdown-item">
+                        <i class="fas fa-paint-brush"></i>描写文
+                    </a>
+                </div>
+            </div>
+            <a href="analysis.html" class="nav-item active" data-nav="analysis">
+                <i class="fas fa-chart-bar"></i>数据分析
+            </a>
+            <a href="guide.html" class="nav-item" data-nav="guide">
+                <i class="fas fa-question-circle"></i>使用指南
+            </a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- 时间范围选择 -->
+        <div class="analysis-header">
+            <div class="date-range">
+                <button class="btn btn-secondary active">近7天</button>
+                <button class="btn btn-secondary">近30天</button>
+                <button class="btn btn-secondary">近3个月</button>
+                <button class="btn btn-secondary">全部</button>
+            </div>
+            <div class="custom-range">
+                <input type="date" class="input-control">
+                <span>至</span>
+                <input type="date" class="input-control">
+                <button class="btn btn-primary">确定</button>
+            </div>
+        </div>
+
+        <!-- 总体统计 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-file-alt"></i>
+                <div class="stat-value" id="totalEssays">156</div>
+                <div class="stat-label">总评阅数量</div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>12.5%</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <div class="stat-value" id="averageScore">85.6</div>
+                <div class="stat-label">平均分数</div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>3.2%</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-trophy"></i>
+                <div class="stat-value" id="highestScore">98</div>
+                <div class="stat-label">最高分数</div>
+                <div class="stat-trend">
+                    <span>持平</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-value">523</div>
+                <div class="stat-label">总字数(千字)</div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>8.7%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图表分析 -->
+        <div class="analysis-grid">
+            <!-- 分数分布 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">分数分布</h3>
+                    <div class="chart-actions">
+                        <button class="btn btn-sm btn-secondary">导出</button>
+                    </div>
+                </div>
+                <canvas id="scoreDistribution"></canvas>
+            </div>
+
+            <!-- 维度得分分析 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">维度得分分析</h3>
+                    <div class="chart-actions">
+                        <button class="btn btn-sm btn-secondary">导出</button>
+                    </div>
+                </div>
+                <canvas id="dimensionScores"></canvas>
+            </div>
+
+            <!-- 进步趋势 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">进步趋势</h3>
+                    <div class="chart-actions">
+                        <select class="input-control">
+                            <option>总分</option>
+                            <option>内容</option>
+                            <option>结构</option>
+                            <option>语言</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="progressTrend"></canvas>
+            </div>
+
+            <!-- 常见问题分析 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">常见问题分析</h3>
+                    <div class="chart-actions">
+                        <button class="btn btn-sm btn-secondary">查看详情</button>
+                    </div>
+                </div>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <div class="problem-name">段落结构不清晰</div>
+                        <div class="problem-bar">
+                            <div class="bar" style="width: 75%">75%</div>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-name">用词重复</div>
+                        <div class="problem-bar">
+                            <div class="bar" style="width: 65%">65%</div>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-name">标点使用不当</div>
+                        <div class="problem-bar">
+                            <div class="bar" style="width: 45%">45%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 详细分析 -->
+        <div class="detailed-analysis">
+            <h3>详细分析报告</h3>
+            <div class="analysis-tabs">
+                <button class="tab-btn active">总体情况</button>
+                <button class="tab-btn">内容分析</button>
+                <button class="tab-btn">结构分析</button>
+                <button class="tab-btn">语言分析</button>
+            </div>
+            <div class="analysis-content">
+                <div class="analysis-section">
+                    <h4>优势分析</h4>
+                    <ul class="analysis-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>作文字数稳定增长，平均字数达到要求</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>标点符号使用正确率提升明显</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="analysis-section">
+                    <h4>改进建议</h4>
+                    <ul class="analysis-list">
+                        <li>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>建议加强段落之间的过渡连接</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>可以适当增加修辞手法的运用</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="nav.js"></script>
+    <script src="analysis.js"></script>
+</body>
+</html> 
